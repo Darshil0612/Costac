@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In - Salary Tea</title>
+  <link rel="stylesheet" href="styles/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js"></script>
+  <script type="module" src="auth.js"></script>
+
+</head>
+<body>
+<div class="container">
+  <div class="form-container">
+    <a href="#" class="back-link">← Back to dashboards</a>
+    <h1>Sign In</h1>
+    <p>Enter your email and password to sign in!</p>
+    <button id="google-btn" class="google-btn">Sign in with Google</button>
+    <div class="divider">or</div>
+
+    <!-- Sign-in Form -->
+    <form id="login-form">
+      <label for="email">Email*</label>
+      <input type="email" id="email" name="email" placeholder="mail@simmpple.com" required>
+
+      <label for="password">Password*</label>
+      <input type="password" id="password" name="password" placeholder="Min. 8 characters" minlength="8" required>
+
+      <div class="options">
+        <div class="checkbox-container">
+          <input type="checkbox" id="keep-logged-in" name="keep-logged-in">
+          <label for="keep-logged-in">Keep me logged in</label>
+        </div>
+        <a href="#" class="forgot-password">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="sign-in-btn">Sign In</button>
+    </form>
+
+    <p class="create-account">Not registered yet? <a href="sign-up.html">Create an Account</a></p>
+  </div>
+  <div class="branding-container">
+    <div class="branding-content"></div>
+  </div>
+</div>
+</body>
+</html>

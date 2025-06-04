@@ -1,0 +1,85 @@
+/* Adjust the width of the individual sales cards */
+.sales-card {
+    min-width: 48%;  /* Increase from 45% to 48% */
+    width: 100%;
+    flex-grow: 1;
+    background-color: #ffffff;
+    border-radius: 20px; /* Ensures rounded corners */
+    margin-top: 25px;
+}
+
+/* Increase width of the large card */
+.sales-card-large {
+    width: 100%;
+    flex-grow: 1;
+    background-color: #ffffff;
+    border-radius: 20px; /* Ensures rounded corners */
+}
+
+/* Adjust Grid Layout for Two Cards to Take More Space */
+.sales-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Ensures they split evenly */
+    gap: 30px; /* Increase space between cards */
+    width: 100%;
+}
+
+/* Make Large Card Span Full Width */
+.sales-card-large {
+    grid-column: span 2; /* Ensures it spans both columns */
+    margin-top: 20px;
+}
+
+/* Ensure the container fully expands */
+.sales-container {
+    margin-left: 0;
+    padding-left: 20px; /* Reduce left padding */
+    width: 100%;  /* Expand full available width */
+}
+
+/* Expand content wrapper */
+.content-wrapper {
+    margin-left: 10vw;  /* Reduce from 12vw to 10vw */
+    padding: 2rem;    /* Increase padding slightly */
+}
+
+/* Table Headers and Cells */
+th, td {
+    padding: 20px 50px; /* Increase cell padding */
+    text-align: left;
+    letter-spacing: 0.8px;
+}
+
+
+
+.card-header {
+    display: flex;
+    align-items: center;  /* Ensures icon and text are aligned */
+    gap: 12px; /* Add spacing between icon and text */
+    margin-bottom: 15px;
+    padding: 10px 15px; /* Adds padding inside the header */
+    border-radius: 8px;
+}
+
+/* Ensure icons are positioned neatly */
+.card-icon {
+    width: 28px;
+    height: 28px;
+    margin-left: 5px; /* Space from left */
+    padding: 5px; /* Ensures spacing within icon area */
+}
+
+/* Ensure Table Headings are aligned with icons */
+.card-header h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #2B3674;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+
+.page-header h2 {
+    color: #2B3674;
+}

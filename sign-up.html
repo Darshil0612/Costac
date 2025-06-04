@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - Salary Tea</title>
+  <link rel="stylesheet" href="styles/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js"></script>
+  <script type="module" src="auth.js"></script>
+</head>
+<body>
+<div class="container">
+  <div class="form-container">
+    <a href="index.html" class="back-link">← Back to Sign In</a>
+    <h1>Sign Up</h1>
+    <p>Enter your details to create an account!</p>
+
+    <!-- Sign-up Form -->
+    <form id="signup-form">
+      <label for="email">Email*</label>
+      <input type="email" id="signup-email" name="email" placeholder="Enter your email" required>
+
+      <label for="password">Password*</label>
+      <input type="password" id="signup-password" name="password" placeholder="Min. 8 characters" minlength="8" required>
+
+      <label for="confirm-password">Confirm Password*</label>
+      <input type="password" id="confirm-password" name="confirm-password" placeholder="Re-enter password" required>
+
+      <button type="submit" class="sign-up-btn">Sign Up</button>
+    </form>
+
+    <p class="create-account">Already have an account? <a href="index.html">Sign In</a></p>
+  </div>
+  <div class="branding-container">
+    <div class="branding-content"></div>
+  </div>
+</div>
+</body>
+</html>

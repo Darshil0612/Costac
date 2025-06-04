@@ -1,0 +1,255 @@
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  background-color: white;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+}
+
+.container {
+  display: flex;
+  width: 90%; 
+  max-width: 1400px; 
+  height: 80vh; 
+  margin: 50px auto;
+  background: white;
+  border-radius: 20px; 
+  overflow: hidden;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+  flex: 1;
+  padding: 60px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 36px; /* Match larger font size */
+  color: #024023;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 16px; /* Adjust font size */
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.google-btn {
+  background: #F4F7FE;
+  color: #2B7442;
+  font-size: 16px; /* Increase font size */
+  width: 90%; /* Adjust button size */
+  margin-bottom: 20px;
+  padding: 12px 20px;
+  border-radius: 4px;
+  border:none;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 90%; /* Align width */
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 4px; /* Rounded input */
+  outline: none;
+}
+
+input[type="email"],
+input[type="password"] {
+  border: 1px solid #ccc; /* Light border */
+  outline: none; /* Remove focus outline */
+  transition: border-color 0.3s ease; /* Smooth border change on focus */
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #88c498; /* Green border on focus */
+}
+.sign-in-btn,
+.sign-up-btn {
+  background: #02542D;
+  color: white;
+  font-size: 16px; /* Larger font */
+  padding: 12px 20px;
+  border-radius: 4px;
+  width: 90%;
+  border:none;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 20px; 
+  gap: 10px; 
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center; 
+  gap: 5px; 
+}
+
+.forgot-password {
+  margin-left: auto; 
+  font-size: 14px;
+  color: #02542D; 
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.back-link {
+  color: #888;
+  font-size: 14px;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 20px;
+}
+
+label {
+  color: #2B7442; 
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.divider {
+  text-align: center;
+  margin: 20px 0;
+  color: #aaa;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 4px; 
+}
+
+.checkbox-container input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  appearance: none;
+  border: 1px solid #02542D; 
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+
+.checkbox-container input[type="checkbox"]:checked {
+  background-color: #02542D;
+  border-color: #02542D;
+}
+
+.checkbox-container input[type="checkbox"]:checked::after {
+  content: "✔";
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  top: 1px;
+  left: 2px;
+}
+
+.checkbox-container label {
+  font-size: 14px;
+  color: #006400; 
+  cursor: pointer;
+}
+
+.forgot-password {
+  color: #02542D; 
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+
+.create-account {
+  color: #2B7442;
+  text-align: center;
+  font-size: 14px;
+}
+
+.create-account a {
+  color: #02542D; 
+  text-decoration: none;
+  font-weight: 700;
+}
+
+
+.branding-container {
+  flex: 1; 
+  background: url('../images/CostacBanner.svg') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  color: white;
+}
+
+.branding-content {
+  text-align: center;
+}
+
+.branding-content img {
+  max-width: 150px; 
+  margin-bottom: 20px;
+}
+
+.branding-content h2 {
+  font-size: 28px; 
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.branding-content .learn-more {
+  margin-top: 20px;
+  font-size: 16px; 
+  padding: 10px 30px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 12px; 
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+
+footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+footer a {
+  color: #888;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .form-container, .branding-container {
+    flex: none;
+    width: 100%;
+    padding: 20px;
+  }
+}

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CFO Financial Performance Dashboard</title>
+  <link rel="stylesheet" href="styles/profile.css" />
+  <link rel="stylesheet" href="styles/financial-dashboard.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+<!-- Waterfall plugin -->
+<script src="https://cdn.jsdelivr.net/npm/chartjs-chart-waterfall@4.0.0/dist/chartjs-chart-waterfall.umd.min.js"></script>
+
+<!-- Datalabels plugin (for values on bars) -->
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+
+
+
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="CostacLogo.svg" alt="SalaryTea Business Logo" class="logo-img">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="profile.html"><img src="Profile.png" class="icon" /> <span class="text">Profile</span></a></li>
+          <li><a href="sales.html"><img src="Cart.png" class="icon" /> <span class="text">Sales Summary</span></a></li>
+          <li><a href="financial-dashboard.html"><img src="Chart.png" class="icon" /> <span class="text">Tables</span></a></li>
+          <li><a href="index.html"><img src="Lock.png" class="icon" /> <span class="text">Sign Out</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="content-wrapper">
+      <header class="navbar">
+        <div class="search-container">
+          <img src="search-icon.svg" alt="Search Icon" class="search-icon" />
+          <input type="text" placeholder="Search" class="search-input" />
+        </div>
+        <div class="nav-icons">
+          <img src="bell-icon.svg" class="nav-icon" />
+          <img src="moon-icon.svg" class="nav-icon" />
+          <img src="info-icon.svg" class="nav-icon" />
+          <img src="andrew-profile.svg" class="profile-pic" />
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <h1 class="page-title">CFO Financial Performance Dashboard</h1>
+
+    
+        <section class="metrics-summary">
+          <div class="metric-card enhanced">
+            <div class="metric-details">
+              <span class="label">Revenue</span>
+              <span class="value">$1,420,980</span>
+              <span class="trend positive">+23% since last month</span>
+            </div>
+          </div>
+
+          <div class="metric-card enhanced">
+            <div class="metric-details">
+              <span class="label">Gross Profit</span>
+              <span class="value">$1,434,965</span>
+              <span class="trend positive">+42% since last month</span>
+            </div>
+          </div>
+
+          <div class="metric-card enhanced no-icon">
+            <div class="metric-details">
+              <span class="label">Cost of Goods Sold</span>
+              <span class="value">$81,502</span>
+            </div>
+          </div>
+
+          <div class="metric-card enhanced no-icon">
+            <div class="metric-details">
+              <span class="label">Operating Expenses</span>
+              <span class="value">$13,266</span>
+            </div>
+          </div>
+
+          <div class="metric-card enhanced no-icon">
+            <div class="metric-details">
+              <span class="label">Net Operating Income</span>
+              <span class="value">$3,833</span>
+            </div>
+          </div>
+
+          <div class="metric-card enhanced no-icon">
+            <div class="metric-details">
+              <span class="label">Net Other Income</span>
+              <span class="value">$138,741</span>
+            </div>
+          </div>
+
+          <div class="metric-card enhanced no-icon">
+            <div class="metric-details">
+              <span class="label">Net Income</span>
+              <span class="value">$37,265</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="dashboard-grid">
+            <!-- only chart-card stuff here -->
+            <div class="chart-card" style="grid-column: span 6;">
+              <div class="chart-title">Net Income</div>
+              <canvas id="netIncomeChart"></canvas>
+            </div>
+          
+            <div class="chart-card" style="grid-column: span 6;">
+              <div class="chart-title">Net Expenses</div>
+              <canvas id="netExpensesChart"></canvas>
+            </div>
+          
+            <div class="chart-card" style="grid-column: span 12;">
+              <div class="chart-title">Profit and Loss Waterfall Analysis</div>
+              <img src="Group 4.svg" alt="Waterfall Chart" style="width: 100%; border-radius: 12px;" />
+            </div>
+       
+          </div> <!-- End .dashboard-grid -->
+          
+          <!-- 🧩 Now we move invoice-row outside the grid -->
+          <div class="invoice-row">
+            <!-- Open Invoices Card -->
+            <div class="invoice-card">
+              <div class="chart-title">Open Invoices by Customer</div>
+              <table>
+                <thead><tr><th>Customer</th><th>Amount</th><th>Qty</th></tr></thead>
+                <tbody>
+                  <tr><td>Customer 1</td><td>$1,502</td><td>40</td></tr>
+                  <tr><td>Customer 2</td><td>$241</td><td>12</td></tr>
+                  <tr><td>Customer 3</td><td>$124</td><td>6</td></tr>
+                  <tr><td>Customer 4</td><td>$1,558</td><td>4</td></tr>
+                  <tr><td>Customer 5</td><td>$44,036</td><td>838</td></tr>
+                  <tr><td>Customer 6</td><td>$78,508</td><td>1,585</td></tr>
+                  <tr><td>Customer 7</td><td>$53,459</td><td>1,178</td></tr>
+                </tbody>
+              </table>
+            </div>
+          
+            <!-- Overdue Invoices Card -->
+            <div class="invoice-card">
+
+              <!-- <img src="calendar-red.svg" alt="Overdue Invoice Icon" />-->
+              <div class="chart-title">Overdue Invoices by Customer</div>
+
+
+            
+              <table>
+                <thead><tr><th>Customer</th><th>Amount</th><th>Qty</th></tr></thead>
+                <tbody>
+                  <tr><td>Customer 1</td><td>$1,502</td><td>40</td></tr>
+                  <tr><td>Customer 2</td><td>$241</td><td>12</td></tr>
+                  <tr><td>Customer 3</td><td>$124</td><td>6</td></tr>
+                  <tr><td>Customer 4</td><td>$1,558</td><td>4</td></tr>
+                  <tr><td>Customer 5</td><td>$44,036</td><td>838</td></tr>
+                  <tr><td>Customer 6</td><td>$78,508</td><td>1,585</td></tr>
+                  <tr><td>Customer 7</td><td>$53,459</td><td>1,178</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const labels = ['Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb'];
+    const incomeData = [15000, 21000, 36000, 27000, 33000, 37500];
+    const expenseData = [18000, 19000, 20000, 31000, 21000, 18900];
+
+    new Chart(document.getElementById('netIncomeChart'), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [{
+          label: 'Net Income',
+          data: incomeData,
+          borderColor: '#3ECF8E',
+          backgroundColor: 'rgba(62, 207, 142, 0.1)',
+          fill: true,
+          tension: 0.4,
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false } },
+        responsive: true,
+      }
+    });
+
+    new Chart(document.getElementById('netExpensesChart'), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [{
+          label: 'Net Expenses',
+          data: expenseData,
+          borderColor: '#F94F46',
+          backgroundColor: 'rgba(249, 79, 70, 0.1)',
+          fill: true,
+          tension: 0.4,
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false } },
+        responsive: true,
+      }
+    });
+  </script>
+  
+</body>
+</html>

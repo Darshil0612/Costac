@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Financial Dashboard</title>
+  <link rel="stylesheet" href="styles/financial-dashboard.css"/>
+  <link rel="stylesheet" href="styles/profile.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+
+
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="CostacLogo.svg" alt="SalaryTea Business Logo" class="logo-img">
+      </div>
+      <nav>
+        <ul>
+            <li>
+                <a href="profile.html">
+                    <img src="Profile.png" alt="Profile Icon" class="icon">
+                    <span class="text">Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="sales.html">
+                    <img src="Cart.png" alt="NFT Marketplace Icon" class="icon">
+                    <span class="text">Sales Summary</span>
+                </a>
+            </li>
+            <li>
+                <a href="financial-dashboard.html">
+                    <img src="Chart.png" alt="Tables Icon" class="icon">
+                    <span class="text">Tables</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="index.html">
+                    <img src="Lock.png" alt="Sign In Icon" class="icon">
+                    <span class="text">Sign Out</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    </aside>
+
+    <div class="content-wrapper">
+      <header class="navbar">
+            <div class="search-container">
+              <img src="search-icon.svg" alt="Search Icon" class="search-icon">
+              <input type="text" placeholder="Search" class="search-input">
+            </div>
+            <div class="nav-icons">
+              <img src="bell-icon.svg" alt="Notifications" class="nav-icon">
+              <img src="moon-icon.svg" alt="Dark Mode" class="nav-icon">
+              <img src="info-icon.svg" alt="Information" class="nav-icon">
+              <img src="andrew-profile.svg" alt="Profile" class="profile-pic">
+            </div>
+      </header>
+
+      <main class="dashboard-content">
+        <h1 class="page-title">Financial Performance Dashboard</h1>
+
+
+        <section class="metrics-summary">
+            <div class="metric-card enhanced">
+                <div class="icon-wrapper">
+                  <img src="net-sales-icon.svg" alt="Net Sales Icon">
+                </div>
+                <div class="metric-details">
+                  <span class="label">Net Sales</span>
+                  <span class="value">$1,420,980</span>
+                  <span class="trend positive">+23% since last month</span>
+                </div>
+              </div>
+            
+              <div class="metric-card enhanced">
+                <div class="icon-wrapper">
+                  <img src="gross-sales-icon.svg" alt="Gross Sales Icon">
+                </div>
+                <div class="metric-details">
+                  <span class="label">Gross Sales</span>
+                  <span class="value">$1,434,965</span>
+                  <span class="trend positive">+23% since last month</span>
+                </div>
+              </div>
+            
+              <div class="metric-card enhanced no-icon">
+                <div class="metric-details">
+                  <span class="label">Tax Amount</span>
+                  <span class="value">$81,502</span>
+                </div>
+              </div>
+            
+              <div class="metric-card enhanced no-icon">
+                <div class="metric-details">
+                  <span class="label">Discounts</span>
+                  <span class="value">$13,266</span>
+                </div>
+              </div>
+            
+              <div class="metric-card enhanced no-icon">
+                <div class="metric-details">
+                  <span class="label">Gratuity</span>
+                  <span class="value">$3,833</span>
+                </div>
+              </div>
+            
+              <div class="metric-card enhanced no-icon">
+                <div class="metric-details">
+                  <span class="label">Tips</span>
+                  <span class="value">$138,741</span>
+                </div>
+              </div>
+            
+              <div class="metric-card enhanced no-icon">
+                <div class="metric-details">
+                  <span class="label">Void Amount</span>
+                  <span class="value">$37,265</span>
+                </div>
+              </div>
+          </section>
+      
+        <div class="dashboard-grid">
+      
+          <!-- Metrics Summary Cards -->
+          
+      
+          <!-- Each chart can now take a grid span -->
+          <div class="chart-card" style="grid-column: span 6;">
+            <canvas id="cashFlowChart"></canvas>
+          </div>
+      
+          <div class="chart-card" style="grid-column: span 6;">
+            <div class="chart-title">Net Sales by Day of Week</div>
+            <canvas id="netSalesDayChart"></canvas>
+          </div>
+      
+          <div class="chart-card" style="grid-column: span 4;">
+            <div class="chart-title">Net Sales by Time</div>
+            <canvas id="netSalesTimeChart"></canvas>
+          </div>
+          
+
+          <div class="chart-card chart-with-labels" style="grid-column: span 4;">
+            <div class="chart-title">Profit Margin Analysis</div>
+            <div class="chart-flex">
+              <canvas id="profitMarginChart" width="100" height="100"></canvas>
+              <div class="chart-labels">
+                <div><strong>65%</strong><br/><span class="label-text">Gross Profit Margin</span></div>
+                <div><strong>35%</strong><br/><span class="label-text">Net Profit Margin</span></div>
+              </div>
+            </div>
+          </div>
+
+        <!-- 
+          <div class="chart-card" style="grid-column: span 4;">
+            <canvas id="expensesBreakdownChart"></canvas>
+          </div>
+
+         -->
+
+          <div class="chart-card" style="grid-column: span 4;">
+            <div class="chart-title">Expenses Breakdown<br>By Category</div>
+            <div class="expense-item">
+              <span class="expense-label">Salaries</span>
+              <div class="expense-bar">
+                <div class="expense-fill" style="width: 40%;"></div>
+                <span class="expense-value">40%</span>
+              </div>
+            </div>
+            <div class="expense-item">
+              <span class="expense-label">Utilitles</span>
+              <div class="expense-bar">
+                <div class="expense-fill" style="width: 15%;"></div>
+                <span class="expense-value">15%</span>
+              </div>
+            </div>
+            <div class="expense-item">
+              <span class="expense-label">Marketing</span>
+              <div class="expense-bar">
+                <div class="expense-fill" style="width: 20%;"></div>
+                <span class="expense-value">20%</span>
+              </div>
+            </div>
+            <div class="expense-item">
+              <span class="expense-label">Rent</span>
+              <div class="expense-bar">
+                <div class="expense-fill" style="width: 10%;"></div>
+                <span class="expense-value">10%</span>
+              </div>
+            </div>
+            <div class="expense-item">
+              <span class="expense-label">Other</span>
+              <div class="expense-bar">
+                <div class="expense-fill" style="width: 15%;"></div>
+                <span class="expense-value">15%</span>
+              </div>
+            </div>
+          </div>
+        
+          
+
+
+      <!--
+          <div class="chart-card" style="grid-column: span 6;">
+            <canvas id="debtToEquityChart"></canvas>
+          </div>
+        -->
+
+
+
+
+
+
+
+
+
+          <!--
+          <div class="chart-card de-card" style="grid-column: span 6;">
+            <div class="chart-title">Cash Flow Statement</div>
+            <div class="de-container">
+              <div class="de-column">
+                <div class="de-row">
+                  <div class="de-pill light">$80,000</div>
+                  <span class="de-label">Operating Activites</span>
+                </div>
+                <div class="de-row">
+                  <div class="de-pill light">$10,000</div>
+                  <span class="de-label">Investing Activites</span>
+                </div>
+                <div class="de-row">
+                  <div class="de-pill light">$20,000</div>
+                  <span class="de-label">Financing Activites</span>
+                </div>
+              </div>
+          
+              <div class="de-arrow">
+                <svg width="30" height="60" viewBox="0 0 24 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 30 H20 M20 30 L10 20 M20 30 L10 40" stroke="#1B2559" stroke-width="2"/>
+                </svg>
+              </div>
+          
+              <div class="de-summary dark">
+                <div class="summary-value">$110,000</div>
+                <div class="summary-label">Net Cash Flow</div>
+              </div>
+            </div>
+          </div>
+          -->
+
+
+
+          <div class="chart-card cashflow-card" style="grid-column: span 6;">
+            <div class="chart-title">Cash Flow Statement</div>
+            <div class="cashflow-container">
+              <div class="cashflow-column">
+                <div class="cashflow-row">
+                  <div class="cashflow-pill">$80,000</div>
+                  <span class="cashflow-label">Operating Activities</span>
+                </div>
+                <div class="cashflow-row">
+                  <div class="cashflow-pill">$10,000</div>
+                  <span class="cashflow-label">Investing Activities</span>
+                </div>
+                <div class="cashflow-row">
+                  <div class="cashflow-pill">$20,000</div>
+                  <span class="cashflow-label">Financing Activities</span>
+                </div>
+              </div>
+          
+              <div class="cashflow-arrow">
+                <svg width="40" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M0 12H20M20 12L14 6M20 12L14 18" stroke="#1B2559" stroke-width="2"/>
+                </svg>
+              </div>
+          
+              <div class="cashflow-summary">
+                <div class="summary-amount">$110,000</div>
+                <div class="summary-text">Net Cash Flow</div>
+              </div>
+            </div>
+          </div>
+          
+    
+
+
+
+          <!--
+          <div class="chart-card" style="grid-column: span 6;">
+            <canvas id="ratiosAnalysisChart"></canvas>
+          </div>
+        -->
+
+
+
+
+
+          <div class="chart-card ratios-analysis" style="grid-column: span 6;">
+            <div class="chart-title">Financial Ratios Analysis</div>
+            <div class="ratios-grid">
+              <canvas id="ratiosAnalysisChart"></canvas>
+              <div class="summary-cards">
+                <div class="summary-card">
+                  <div class="summary-value">20%</div>
+                  <div class="summary-label">Profit Margin</div>
+                </div>
+                <div class="summary-card">
+                  <div class="summary-value">40%</div>
+                  <div class="summary-label">Current Ratio</div>
+                </div>
+                <div class="summary-card">
+                  <div class="summary-value">30%</div>
+                  <div class="summary-label">Return on Investment</div>
+                </div>
+                <div class="summary-card">
+                  <div class="summary-value">10%</div>
+                  <div class="summary-label">Debt-to-Equity Ratio</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+
+          <!--
+          <div class="ratios-labels">
+            <div class="ratio-box">20%<span>Profit Margin</span></div>
+            <div class="ratio-box">40%<span>Current Ratio</span></div>
+            <div class="ratio-box">30%<span>Return on Investment</span></div>
+            <div class="ratio-box">10%<span>Debt-to-Equity Ratio</span></div>
+          </div>
+        -->
+        </div>
+      </main>
+      
+    </div>
+  </div>
+
+  <script src="financial-dashboard.js"></script>
+  <!--<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script> -->
+
+</body>
+</html>
