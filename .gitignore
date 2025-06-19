@@ -1,0 +1,23 @@
+# Node modules
+node_modules/
+
+# Firebase config (if you later move secrets to .env)
+.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# macOS system files
+.DS_Store
+
+# VS Code workspace settings
+.vscode/
+
+# Dependency lock (optional if you prefer fresh installs)
+# package-lock.json
+
+# Build outputs (if you later add React/Vite or bundling)
+dist/
+build/
