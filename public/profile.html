@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -17,7 +17,6 @@
       <aside class="sidebar">
         <div class="logo">
             <img src="CostacLogo.svg" alt="SalaryTea Business Logo" class="logo-img">
-           <!-- <span class="logo-bold">SalaryTea</span> Business  -->
         </div>
         <nav>
             <ul>
@@ -68,7 +67,6 @@
             </header>
 
           <section class="profile-summary">
-            <!-- Profile Card -->
             <div class="profile-card">
               <div class="banner"></div>
               <div class="avatar-wrapper">
@@ -113,11 +111,10 @@
               <div class="upload-section">
                 <img src="upload.svg" alt="Upload Icon">
                 <h3>Upload Files</h3>
-                <!-- <p>PNG, JPG, and GIF files are allowed</p> -->
               </div>
               <div class="profile-section">
                 <h1>Quick Books Sync</h1>
-                <!-- <p>Stay on the pulse of distributed projects with an online whiteboard to plan, coordinate, and discuss</p> -->
+            
                 <button>Sync Now</button>
                 <input type="file" id="fileInput" style="display: none;" />
                 <p id="syncStatus" class="sync-status">✅ File synced successfully!</p>
@@ -316,4 +313,197 @@
 
 
   </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile</title>
+
+  <!-- ✅ Correct CSS Path (relative to public/) -->
+  <link rel="stylesheet" href="../src/styles/profile.css" />
+</head>
+
+<body>
+<div class="dashboard">
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="images/CostacLogo.svg" alt="Costac Logo" class="logo-img" />
+    </div>
+    <nav>
+      <ul>
+        <li><a href="profile.html"><img src="images/Profile.png" class="icon" alt=""><span class="text">Profile</span></a></li>
+        <li><a href="sales.html"><img src="images/Cart.png" class="icon" alt=""><span class="text">Sales Summary</span></a></li>
+        <li><a href="financial-dashboard.html"><img src="images/Chart.png" class="icon" alt=""><span class="text">Tables</span></a></li>
+        <li><a href="index.html"><img src="images/Lock.png" class="icon" alt=""><span class="text">Sign Out</span></a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="content-wrapper">
+    <main class="content">
+
+      <header class="navbar">
+        <div class="search-container">
+          <img src="images/search-icon.svg" alt="Search" class="search-icon">
+          <input type="text" placeholder="Search" class="search-input" />
+        </div>
+        <div class="nav-icons">
+          <img src="images/bell-icon.svg" alt="Notifications" class="nav-icon" />
+          <img src="images/moon-icon.svg" alt="Dark Mode" class="nav-icon" />
+          <img src="images/info-icon.svg" alt="Info" class="nav-icon" />
+          <img src="images/andrew-profile.svg" alt="Profile" class="profile-pic" />
+        </div>
+      </header>
+
+      <!-- Profile Section -->
+      <section class="profile-summary">
+        <div class="profile-card">
+          <div class="banner"></div>
+          <div class="avatar-wrapper">
+            <img src="images/andrew-profile.svg" alt="Andrew" class="avatar" />
+          </div>
+          <div class="profile-info">
+            <h2>Andrew Cordssen-David</h2>
+            <p class="designation">Product Designer</p>
+            <div class="stats">
+              <div><h3>17</h3><p>Posts</p></div>
+              <div><h3>9.7k</h3><p>Followers</p></div>
+              <div><h3>274</h3><p>Following</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="storage-card">
+          <div class="icon"><img src="images/Cloud.png" alt="Cloud Icon" /></div>
+          <h3>Your storage</h3>
+          <p>Supervise your drive space in the easiest way</p>
+          <div class="storage-bar"><div class="used" style="width: 50%;"></div></div>
+          <div class="storage-info"><span>25.6 Gb</span><span>50 Gb</span></div>
+        </div>
+
+        <div class="upload-card">
+          <div class="upload-section">
+            <img src="images/upload.svg" alt="Upload Icon" />
+            <h3>Upload Files</h3>
+          </div>
+          <div class="profile-section">
+            <h1>Quick Books Sync</h1>
+            <button>Sync Now</button>
+            <input type="file" id="fileInput" style="display: none;" />
+            <p id="syncStatus" class="sync-status"></p>
+            <div id="loadingIndicator" style="display: none; margin-top: 10px;">
+              <div class="spinner"></div> Generating Financial Summary...
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cards Section -->
+      <div class="cards-container">
+        <div class="cards-row">
+          <div class="projects-card">
+            <h2>All Projects</h2>
+            <p>Here you can find more details about your projects.</p>
+            <div class="project-list">
+              <div class="project-item">
+                <img src="images/Project1.png" alt="Project 1" class="project-image">
+                <div class="project-info">
+                  <h2 class="project-title">Technology behind the Blockchain</h2>
+                  <p>Project #1 • <a href="#">See project details</a></p>
+                </div>
+              </div>
+              <div class="project-item">
+                <img src="images/Project2.png" alt="Project 2" class="project-image">
+                <div class="project-info">
+                  <h2 class="project-title">Greatest way to a good Economy</h2>
+                  <p>Project #2 • <a href="#">See project details</a></p>
+                </div>
+              </div>
+              <div class="project-item">
+                <img src="images/Project3.png" alt="Project 3" class="project-image">
+                <div class="project-info">
+                  <h2 class="project-title">Most essential tips for Burnout</h2>
+                  <p>Project #3 • <a href="#">See project details</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card info-card">
+            <h2>General Information</h2>
+            <p>As we live, our hearts turn colder... (trimmed)</p>
+            <div class="info-list">
+              <div class="info-item"><h3>Education</h3><p>Stanford University</p></div>
+              <div class="info-item"><h3>Languages</h3><p>English, Spanish, Italian</p></div>
+              <div class="info-item"><h3>Department</h3><p>Product Design</p></div>
+              <div class="info-item"><h3>Work History</h3><p>Google, Facebook</p></div>
+              <div class="info-item"><h3>Organization</h3><p>Simmmple Web LLC</p></div>
+              <div class="info-item"><h3>Birthday</h3><p>20 July 1986</p></div>
+            </div>
+          </div>
+
+          <div class="card notifications-card">
+            <div class="notifications-header"><h2>Notifications</h2><button class="menu-button">⋮</button></div>
+            <div class="notifications-list">
+              <label class="notification-item"><input type="checkbox" checked><span class="toggle-switch"></span> Item update notifications</label>
+              <label class="notification-item"><input type="checkbox"><span class="toggle-switch"></span> Item comment notifications</label>
+              <label class="notification-item"><input type="checkbox" checked><span class="toggle-switch"></span> Buyer review notifications</label>
+              <label class="notification-item"><input type="checkbox"><span class="toggle-switch"></span> Rating reminders</label>
+              <label class="notification-item"><input type="checkbox"><span class="toggle-switch"></span> Meetups near you</label>
+              <label class="notification-item"><input type="checkbox" checked><span class="toggle-switch"></span> Company news</label>
+              <label class="notification-item"><input type="checkbox" checked><span class="toggle-switch"></span> New launches</label>
+              <label class="notification-item"><input type="checkbox"><span class="toggle-switch"></span> Monthly changes</label>
+              <label class="notification-item"><input type="checkbox"><span class="toggle-switch"></span> Subscribe newsletter</label>
+              <label class="notification-item"><input type="checkbox" checked><span class="toggle-switch"></span> Email me when followed</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- ✅ Firebase Auth Module -->
+<script type="module" src="../src/js/auth.js"></script>
+
+<!-- ✅ File Sync Logic -->
+<script>
+  const syncButton = document.querySelector(".profile-section button");
+  const fileInput = document.getElementById("fileInput");
+  const syncStatus = document.getElementById("syncStatus");
+  const loadingIndicator = document.getElementById("loadingIndicator");
+
+  syncButton.addEventListener("click", () => {
+    if (syncButton.textContent === "View Financial Summary") {
+      window.location.href = "cfo-dashboard.html";
+    } else {
+      fileInput.click();
+    }
+  });
+
+  fileInput.addEventListener("change", () => {
+    if (fileInput.files.length > 0) {
+      const fileName = fileInput.files[0].name;
+      syncStatus.textContent = "";
+      loadingIndicator.style.display = "block";
+      syncButton.disabled = true;
+
+      setTimeout(() => {
+        loadingIndicator.style.display = "none";
+        syncStatus.textContent = `✅ ${fileName} synced successfully!`;
+        syncButton.textContent = "View Financial Summary";
+        syncButton.disabled = false;
+      }, 5000);
+    }
+  });
+</script>
+
+</body>
 </html>

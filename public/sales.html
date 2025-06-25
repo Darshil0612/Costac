@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sales Summary</title>
-    <link rel="stylesheet" href="sales.css">
-    <link rel="stylesheet" href="styles/profile.css">
-    <script defer src="sales.js"></script>
+    <link rel="stylesheet" href="../src/styles/sales.css">
+    <link rel="stylesheet" href="../src/styles/profile.css">
+    <script defer src="../src/js/sales.js"></script>
 </head>
 <body>
     <div class="dashboard">
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
-                <img src="CostacLogo.svg" alt="SalaryTea Business Logo" class="logo-img">
+                <img src="../public/images/CostacLogo.svg" alt="SalaryTea Business Logo" class="logo-img">
             </div>
             <!-- 
             <nav>
@@ -30,27 +30,27 @@
         <nav>
             <ul>
                 <li>
-                    <a href="profile.html">
-                        <img src="Profile.png" alt="Profile Icon" class="icon">
+                    <a href="../public/profile.html">
+                        <img src="../public/images/Profile.png" alt="Profile Icon" class="icon">
                         <span class="text">Profile</span>
                     </a>
                 </li>
                 <li>
-                    <a href="sales.html">
-                        <img src="Cart.png" alt="NFT Marketplace Icon" class="icon">
+                    <a href="../public/sales.html">
+                        <img src="../public/images/Cart.png" alt="NFT Marketplace Icon" class="icon">
                         <span class="text">Sales Summary</span>
                     </a>
                 </li>
                 <li>
-                    <a href="financial-dashboard.html">
-                        <img src="Chart.png" alt="Tables Icon" class="icon">
+                    <a href="../public/financial-dashboard.html">
+                        <img src="../public/images/Chart.png" alt="Tables Icon" class="icon">
                         <span class="text">Tables</span>
                     </a>
                 </li>
                 
                 <li>
-                    <a href="index.html">
-                        <img src="Lock.png" alt="Sign In Icon" class="icon">
+                    <a href="../public/index.html">
+                        <img src="../public/images/Lock.png" alt="Sign In Icon" class="icon">
                         <span class="text">Sign Out</span>
                     </a>
                 </li>
@@ -64,14 +64,14 @@
                 <!-- Navbar -->
                 <header class="navbar">
                     <div class="search-container">
-                        <img src="search-icon.svg" alt="Search Icon" class="search-icon">
+                        <img src="../public/images/search-icon.svg" alt="Search Icon" class="search-icon">
                         <input type="text" placeholder="Search" class="search-input">
                     </div>
                     <div class="nav-icons">
-                        <img src="bell-icon.svg" alt="Notifications" class="nav-icon">
-                        <img src="moon-icon.svg" alt="Dark Mode" class="nav-icon">
-                        <img src="info-icon.svg" alt="Information" class="nav-icon">
-                        <img src="andrew-profile.svg" alt="Profile" class="profile-pic">
+                        <img src="../public/images/bell-icon.svg" alt="Notifications" class="nav-icon">
+                        <img src="../public/images/moon-icon.svg" alt="Dark Mode" class="nav-icon">
+                        <img src="../public/images/info-icon.svg" alt="Information" class="nav-icon">
+                        <img src="../public/images/andrew-profile.svg" alt="Profile" class="profile-pic">
                     </div>
                 </header>
 
@@ -86,7 +86,7 @@
                         <!-- Sales by Time of Day -->
                         <div class="sales-card">
                             <div class="card-header">
-                                <img src="clock-icon.svg" alt="Clock Icon" class="card-icon">
+                                <img src="../public/images/clock-icon.svg" alt="Clock Icon" class="card-icon">
                                 <h3>Net Sales by Time of Day</h3>
                             </div>
                             <table id="sales-time-table">
@@ -100,7 +100,7 @@
                         <!-- Sales by Date -->
                         <div class="sales-card">
                             <div class="card-header">
-                                <img src="calendar-icon.svg" alt="Calendar Icon" class="card-icon">
+                                <img src="../public/images/calendar-icon.svg" alt="Calendar Icon" class="card-icon">
                                 <h3>Net Sales by Date</h3>
                             </div>
                             <table id="sales-date-table">
@@ -115,7 +115,7 @@
                     <!-- Sales by Category -->
                     <div class="sales-card-large">
                         <div class="card-header">
-                            <img src="dollar-icon.svg" alt="Dollar Icon" class="card-icon">
+                            <img src="../public/images/dollar-icon.svg" alt="Dollar Icon" class="card-icon">
                             <h3>Net Sales by Category</h3>
                         </div>
                         <table id="sales-category-table">
