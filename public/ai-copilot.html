@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Financial Copilot</title>
+  <link rel="stylesheet" href="../src/styles/ai-copilot.css" />
+</head>
+<body>
+  <div class="copilot-container">
+    <h1>📊 AI Financial Copilot</h1>
+    <form id="upload-form">
+      <input type="file" id="excel-file" accept=".xlsx,.xls" required />
+      <button type="submit">Upload & Analyze</button>
+    </form>
+    <div id="output"></div>
+
+    <div class="chat-section" style="display: none;">
+      <h2>Ask Questions about your data</h2>
+      <input type="text" id="user-question" placeholder="Ask something..." />
+      <button onclick="askQuestion()">Send</button>
+      <div id="chat-output"></div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("upload-form").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const fileInput = document.getElementById("excel-file");
+      const formData = new FormData();
+      formData.append("file", fileInput.files[0]);
+
+      const response = await fetch("http://localhost:5001/analyze", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+      document.getElementById("output").innerText = data.summary || "Analysis complete.";
+      document.querySelector(".chat-section").style.display = "block";
+    });
+
+    async function askQuestion() {
+      const question = document.getElementById("user-question").value;
+      const response = await fetch("http://localhost:5001/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question }),
+      });
+      const data = await response.json();
+      const chatBox = document.getElementById("chat-output");
+      const p = document.createElement("p");
+      p.textContent = "🤖 " + data.answer;
+      chatBox.appendChild(p);
+    }
+  </script>
+</body>
+</html>
