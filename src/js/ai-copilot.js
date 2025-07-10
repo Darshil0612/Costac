@@ -1,31 +1,30 @@
-function uploadFile() {
+document.getElementById("upload-form").addEventListener("submit", async function (e) {
+  e.preventDefault();
   const fileInput = document.getElementById("excel-file");
-  const output = document.getElementById("output");
-  const file = fileInput.files[0];
-  if (!file) {
-    output.innerHTML = "Please upload a file.";
-    return;
-  }
-
   const formData = new FormData();
-  formData.append("file", file);
+  formData.append("file", fileInput.files[0]);
 
-  output.innerHTML = "Processing...";
-
-  fetch("http://localhost:5002/api/analyze-excel", {
+  const response = await fetch("http://localhost:5001/analyze", {
     method: "POST",
-    body: formData
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.summary) {
-      output.innerHTML = `<pre>${data.summary}</pre>`;
-    } else {
-      output.innerHTML = `<span style="color:red;">Error: ${data.error}</span>`;
-    }
-  })
-  .catch(err => {
-    output.innerHTML = `<span style="color:red;">Request failed</span>`;
-    console.error(err);
+    body: formData,
   });
+
+  const data = await response.json();
+  document.getElementById("output").innerText = data.summary || "Analysis complete.";
+  document.querySelector(".chat-section").style.display = "block";
+});
+
+async function askQuestion() {
+  const question = document.getElementById("user-question").value;
+  const response = await fetch("http://localhost:5001/ask", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ question }),
+  });
+
+  const data = await response.json();
+  const chatBox = document.getElementById("chat-output");
+  const p = document.createElement("p");
+  p.textContent = "🤖 " + data.answer;
+  chatBox.appendChild(p);
 }
