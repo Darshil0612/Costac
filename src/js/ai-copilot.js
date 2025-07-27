@@ -14,7 +14,7 @@ document.getElementById("upload-form").addEventListener("submit", async function
   document.querySelector(".chat-section").style.display = "block";
 });
 
-async function askQuestion() {
+document.getElementById("ask-btn").addEventListener("click", async () => {
   const question = document.getElementById("user-question").value;
   const response = await fetch("http://localhost:5001/ask", {
     method: "POST",
@@ -25,6 +25,6 @@ async function askQuestion() {
   const data = await response.json();
   const chatBox = document.getElementById("chat-output");
   const p = document.createElement("p");
-  p.textContent = "🤖 " + data.answer;
+  p.textContent = "🤖 " + (data.answer || "Sorry, I couldn't understand that.");
   chatBox.appendChild(p);
-}
+});
