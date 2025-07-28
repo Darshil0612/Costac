@@ -2,16 +2,20 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import pandas as pd
 import requests
-import re
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 
 app = Flask(__name__)
 CORS(app)
 
 uploaded_df = None
-GROQ_API_KEY = "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"
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
 MODEL_NAME = "meta-llama/llama-4-scout-17b-16e-instruct"
 
+# 🔧 Clean column names
 def clean_column_names(df):
     df.columns = df.columns.str.replace("\n", " ", regex=True)
     df.columns = df.columns.str.strip()
@@ -21,46 +25,54 @@ def clean_column_names(df):
         df.rename(columns={df.columns[0]: "Account"}, inplace=True)
     return df
 
-def detect_metrics(df):
-    financial_keywords = ["revenue", "income", "net", "profit", "expenses", "cogs", "cost", "gross", "sales"]
-    detected = [col for col in df.columns if any(word in col.lower() for word in financial_keywords)]
-    return detected[:5]
+# 📊 Extract key metrics from 'Account' row values
+def extract_totals(df):
+    totals = {}
+    keywords = {
+        "Total Income": "Total Income",
+        "Gross Profit": "Gross Profit",
+        "Total Expenses": "Total Expenses",
+        "Net Operating Income": "Net Operating Income",
+        "Net Income": "Net Income"
+    }
 
+    if "Account" not in df.columns:
+        return totals
+
+    account_col = df["Account"].astype(str).str.strip()
+
+    for label, display in keywords.items():
+        match = df[account_col == label]
+        if not match.empty:
+            try:
+                # Look for first numeric value in the row
+                numeric = pd.to_numeric(match.iloc[0][1:], errors='coerce')
+                value = numeric.dropna().iloc[0]
+                totals[display] = value
+            except Exception:
+                continue
+
+    return totals
+
+# 📑 Generate summary for LLM
 def generate_data_summary(df: pd.DataFrame) -> str:
     df = clean_column_names(df)
+    totals = extract_totals(df)
+
     summary = f"✅ The uploaded dataset has {df.shape[0]} rows and {df.shape[1]} columns.\n"
-
-    key_metrics = ["Total Income", "Total Expenses", "Gross Profit", "Net Operating Income", "Net Income"]
-    found = {}
-
-    if "Account" in df.columns:
-        for metric in key_metrics:
-            row = df[df["Account"].astype(str).str.strip().str.lower() == metric.lower()]
-            if not row.empty:
-                try:
-                    # Drop the 'Account' column and convert rest to numeric
-                    values = pd.to_numeric(row.drop(columns=["Account"], errors="ignore").values.flatten(), errors='coerce')
-                    values = values[~pd.isnull(values)]
-                    if len(values) > 0:
-                        found[metric] = values.sum()
-                except Exception:
-                    continue
-
-    if found:
+    if totals:
         summary += "\n📊 Key Financials:\n"
-        for k, v in found.items():
-            summary += f"- {k}: ${v:,.2f}\n"
+        for key, value in totals.items():
+            summary += f"- {key}: ${value:,.2f}\n"
     else:
-        summary += "\n⚠️ No recognizable financial values (like Net Income) found in the 'Account' column."
+        summary += "\n⚠️ Could not find standard financial totals like 'Net Income'."
 
-    # Sample Accounts
     if "Account" in df.columns:
-        sample_accounts = df["Account"].dropna().unique()
-        sample_accounts = [acct.strip() for acct in sample_accounts if acct and acct.strip().lower() != "account"]
-        summary += "\n\n📌 Sample Accounts:\n- " + ", ".join(sample_accounts[:5])
+        sample_accounts = df["Account"].dropna().unique()[:5]
+        if len(sample_accounts) > 0:
+            summary += "\n\n📌 Sample Accounts:\n- " + ", ".join(map(str, sample_accounts))
 
     return summary.strip()
-
 
 @app.route('/analyze', methods=['POST'])
 def analyze():
@@ -95,10 +107,10 @@ def ask():
     summary_context = generate_data_summary(uploaded_df)
 
     user_prompt = (
-    f"Here is a quick summary of their financial data:\n\n{summary_context}\n\n"
-    f"The user asks: \"{question}\"\n\n"
-    "Reply as if you're advising them in person. Be insightful, supportive, and human."
-)
+        f"Here is a summary of the uploaded P&L data:\n\n{summary_context}\n\n"
+        f"The user asks: \"{question}\"\n\n"
+        "You are a friendly financial advisor. Give helpful, human, non-technical advice. Use real values from the summary where useful."
+    )
 
     payload = {
         "model": MODEL_NAME,
@@ -106,8 +118,8 @@ def ask():
             {
                 "role": "system",
                 "content": (
-                    "You are a smart and friendly financial advisor helping a business owner review their uploaded P&L report. "
-                    "Use clear, helpful language. Give 2-3 insights such as trends, irregularities, or advice. Avoid technical terms."
+                    "You are a smart and supportive financial advisor helping a small business owner review their uploaded P&L sheet. "
+                    "Avoid technical terms. Give 2-3 insights. Speak naturally and clearly."
                 )
             },
             {

@@ -1,8 +1,7 @@
 # Node modules
 node_modules/
 
-# Firebase config (if you later move secrets to .env)
-.env
+server/.env
 
 # Logs
 npm-debug.log*
