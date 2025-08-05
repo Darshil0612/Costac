@@ -4,31 +4,69 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AI Financial Copilot</title>
+  <link rel="stylesheet" href="../src/styles/profile.css" />
+  <link rel="stylesheet" href="../src/styles/financial-dashboard.css" />
   <link rel="stylesheet" href="../src/styles/ai-copilot.css" />
   <script src="../src/js/ai-copilot.js" defer></script>
 </head>
 <body>
-  <div class="copilot-container">
-    <h1>📊 AI Financial Copilot</h1>
-
-    <!-- Upload Form -->
-    <form id="upload-form">
-      <label for="excel-file" class="upload-label">Upload Excel or CSV File</label>
-      <input type="file" id="excel-file" accept=".xlsx,.xls,.csv" required />
-      <button type="submit" class="analyze-btn">Upload & Analyze</button>
-    </form>
-
-    <!-- Summary Output -->
-    <div id="output" class="output-box"></div>
-
-    <!-- Chat Section -->
-    <div class="chat-section" style="display: none;">
-      <h2>Ask Questions About Your Data</h2>
-      <div class="chat-box">
-        <input type="text" id="user-question" placeholder="Ask something..." />
-        <button type="button" id="ask-btn">Send</button>
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="/public/images/CostacLogo.svg" alt="SalaryTea Business Logo" class="logo-img">
       </div>
-      <div id="chat-output" class="chat-output"></div>
+      <nav>
+        <ul>
+          <li><a href="../public/profile.html"><img src="../public/images/Profile.png" class="icon" /> <span class="text">Profile</span></a></li>
+          <li><a href="../public/sales.html"><img src="../public/images/Cart.png" class="icon" /> <span class="text">Sales Summary</span></a></li>
+          <li><a href="../public/financial-dashboard.html"><img src="../public/images/Chart.png" class="icon" /> <span class="text">Tables</span></a></li>
+          <li><a href="../public/index.html"><img src="../public/images/Lock.png" class="icon" /> <span class="text">Sign Out</span></a></li>
+          <li><a href="../public/ai-copilot.html"><img src="../public/images/ai-icon.jpg" class="icon" /> <span class="text">Copilot</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="content-wrapper">
+      <!-- Top Navbar -->
+      <header class="navbar">
+        <div class="search-container">
+          <img src="../public/images/search-icon.svg" alt="Search Icon" class="search-icon" />
+          <input type="text" placeholder="Search" class="search-input" />
+        </div>
+        <div class="nav-icons">
+          <img src="../public/images/bell-icon.svg" class="nav-icon" />
+          <img src="../public/images/moon-icon.svg" class="nav-icon" />
+          <img src="../public/images/info-icon.svg" class="nav-icon" />
+          <img src="../public/images/andrew-profile.svg" class="profile-pic" />
+        </div>
+      </header>
+
+      <!-- Copilot App Content -->
+      <main class="dashboard-content">
+        <h1 class="page-title">📊 AI Financial Copilot</h1>
+
+        <!-- Upload Form -->
+        <form id="upload-form">
+          <label for="excel-file" class="upload-label">Upload Excel or CSV File</label>
+          <input type="file" id="excel-file" accept=".xlsx,.xls,.csv" required />
+          <button type="submit" class="analyze-btn">Upload & Analyze</button>
+        </form>
+
+        <!-- Summary Output -->
+        <div id="output" class="output-box"></div>
+
+        <!-- Chat Section -->
+        <div class="chat-section" style="display: none;">
+          <h2>Ask Questions About Your Data</h2>
+          <div class="chat-box">
+            <input type="text" id="user-question" placeholder="Ask something..." />
+            <button type="button" id="ask-btn">Send</button>
+          </div>
+          <div id="chat-output" class="chat-output"></div>
+        </div>
+      </main>
     </div>
   </div>
 </body>
