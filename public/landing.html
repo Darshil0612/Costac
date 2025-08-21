@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CoStac — Stack smarter. Scale faster.</title>
+  <link rel="stylesheet" href="../src/styles/landing.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="nav">
+    <div class="container nav__row">
+      <a class="brand" href="#">
+        <span class="brand__dot"></span>
+        <span class="brand__text">CoStac</span>
+      </a>
+      <nav class="nav__links">
+        <a href="#">Products</a>
+        <a href="#">Solutions</a>
+        <a href="#">Community</a>
+        <a href="#">Resources</a>
+        <a href="#">Pricing</a>
+        <a href="#">Contact</a>
+      </nav>
+      <div class="nav__auth">
+        <button class="btn btn--ghost">Sign in</button>
+        <button class="btn btn--primary">Register</button>
+      </div>
+      <button class="nav__burger" id="burger" aria-label="Menu">
+        <svg class="icon" viewBox="0 0 24 24">
+          <path d="M4 6h16M4 12h16M4 18h16" 
+                stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile Drawer -->
+    <div class="drawer" id="drawer" hidden>
+      <div class="container">
+        <a href="#">Products</a>
+        <a href="#">Solutions</a>
+        <a href="#">Community</a>
+        <a href="#">Resources</a>
+        <a href="#">Pricing</a>
+        <a href="#">Contact</a>
+        <div class="drawer__auth">
+          <button class="btn btn--ghost full">Sign in</button>
+          <button class="btn btn--primary full">Register</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero with background image -->
+  <section class="hero" style="background-image: url('../public/images/landinghero.jpg');">
+    <div class="overlay"></div>
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <span class="badge">Finance Copilot</span>
+        <h1>Stack smarter.<br/>Scale faster.</h1>
+        <p>
+          The <span class="highlight">1st emotionally intelligent financial copilot</span>
+          that stacks insights on top of your operations.
+        </p>
+        <div class="cta">
+          <button class="btn btn--primary">Get started</button>
+          <button class="btn btn--secondary">Book a demo</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logos -->
+  <section class="logos">
+    <div class="container">
+      <p class="logos__kicker">40,000+ finance teams have saved millions of hours with us</p>
+      <div class="logos__grid">
+        <div>eventbrite</div><div>shopify</div><div>anduril</div>
+        <div>opendoor</div><div>zola</div><div>kumon</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="how">
+    <div class="container">
+      <h2>HOW DOES IT WORK?</h2>
+      <p class="how__desc">
+        We combine cutting-edge technology, a world-class finance team, and access to financing
+        to create a custom package that saves you time and helps you grow.
+      </p>
+      <div class="how__grid">
+        <article class="card tone--green">
+          <h3>SUBSCRIBE &amp; ONBOARD</h3>
+          <p>Onboard to the platform, link your QuickBooks, and grant read-only bank access.</p>
+        </article>
+        <article class="card tone--purple">
+          <h3>CLEAN UP YOUR BOOKS</h3>
+          <p>Meet your accountant and funding coach; get your finances caught up and correct.</p>
+        </article>
+        <article class="card tone--yellow">
+          <h3>MONTHLY BOOKS &amp; CFO REPORTING</h3>
+          <p>Review your books and CFO report every month so you never miss an opportunity.</p>
+        </article>
+        <article class="card tone--cyan">
+          <h3>EXECUTE YOUR FUNDING STRATEGY</h3>
+          <p>Receive a custom debt strategy and connections to over 60+ lenders.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <span class="brand__dot"></span>
+        <span class="brand__text dark">CoStac</span>
+        <p>Stack smarter. Scale faster.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul><li><a href="#">Features</a></li><li><a href="#">Pricing</a></li></ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li></ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul><li><a href="#">Blog</a></li><li><a href="#">Docs</a></li></ul>
+      </div>
+    </div>
+    <div class="footer__bottom">© <span id="year"></span> CoStac, Inc. All rights reserved.</div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
