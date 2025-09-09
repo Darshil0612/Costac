@@ -17,3 +17,26 @@ if (burger && drawer) {
 }
 
 if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+(function () {
+  const el = document.getElementById('typewriter');
+  if (!el) return;
+
+  const text = 'Stack smarter\nScale faster'; // \n becomes <br>
+  const speed = 60; // ms per character
+  let i = 0;
+
+  function type() {
+    if (i <= text.length) {
+      el.innerHTML = text.slice(0, i).replace(/\n/g, '<br>');
+      i++;
+      if (i <= text.length) {
+        setTimeout(type, speed);
+      } else {
+        // when finished typing → add class to remove caret
+        el.parentElement.classList.add('done');
+      }
+    }
+  }
+  type();
+})();
