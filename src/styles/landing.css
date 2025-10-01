@@ -102,13 +102,20 @@ html,body{
 /* ================================
    3) Hero (now uses same gutters as others)
    ================================ */
+/* ================================
+   HERO (unified, responsive, full image visible)
+   ================================ */
 .hero {
   height: 100vh;
   background: url('../../public/images/landinghero.jpg') no-repeat right center;
-  background-size: cover;
+  background-size: auto 100%;   /* fill vertically, contain horizontally */
+  background-color: #000;       /* fallback for side gaps */
+  
   display: flex;
   align-items: center;
-  padding-left: 8%;
+  justify-content: center;
+  padding: clamp(2rem, 6vw, 5rem);
+  text-align: center;
 }
 
 .hero-content {
@@ -117,20 +124,19 @@ html,body{
 }
 
 .hero h1 {
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(2.5rem, 6vw, 5rem);
   font-weight: 800;
-  line-height: 1.05;
+  line-height: 1.1;
   letter-spacing: -0.02em;
-  color: #c1f0c1
+  margin: 0 0 0.6rem 0;
+  color: #c1f0c1;
 }
 
 .typing {
   position: relative;
   display: inline-block;
-  /* optional for nicer wrapping on small screens */
   word-break: break-word;
 }
-
 .typing::after {
   content: "";
   position: absolute;
@@ -140,46 +146,50 @@ html,body{
   background: currentColor;
   animation: blink 0.9s step-end infinite;
 }
-.typing.done::after {
-  display: none;
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
-}
+.typing.done::after { display: none; }
+@keyframes blink { 50% { opacity: 0; } }
 
 .hero p {
-  margin-top: 8px;   /* tighter gap from the h1 */
-  margin-bottom: 16px; /* still some breathing room before buttons */
-  font-size: 2rem;
+  margin: 0 0 1.2rem 0;
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  line-height: 1.5;
+  color: white;
 }
 
 .highlight {
-  color: #3bc7c4; /* teal accent */
+  color: #3bc7c4;
   font-weight: bold;
 }
 
-.cta-buttons {
-  margin-top: 20px;
+.cta-row {
+  display: flex;
+  flex-direction: column;   /* stack vertically on mobile */
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
 
-.btn-primary, .btn-secondary {
-  padding: 12px 24px;
-  margin-right: 15px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
+/* Buttons use global .btn system */
+.cta-row .btn--primary {
+  background: #3bc7c4;  /* teal */
+  color: #000;
 }
 
-.btn-primary {
-  background: #3bc7c4;
-  color: black;
+.cta-row .btn--secondary {
+  background: #fff;     /* solid white */
+  color: #000;
+  border: none;
 }
 
-.btn-secondary {
-  border: 2px solid #fff;
-  color: white;
+/* On larger screens, put them side-by-side */
+@media (min-width: 768px) {
+  .cta-row {
+    flex-direction: row;
+    justify-content: center;
+  }
 }
+
+
 /* Devices */
 .devices{ position:relative }
 .laptop{
@@ -586,4 +596,104 @@ html,body{
   .how__grid{ grid-template-columns:repeat(4,1fr) }
 
   .footer__grid{ grid-template-columns:repeat(4,1fr) }
+}
+
+
+/* ================================
+   HERO — Mobile-first responsive fixes
+   ================================ */
+
+/* Layout */
+.hero {
+  padding-block: clamp(2rem, 6vw, 5rem);
+}
+
+.hero .container {
+  /* ensure we’re not edge-to-edge on small screens */
+  padding-inline: clamp(1rem, 5vw, 2rem);
+}
+
+.hero__grid {
+  display: grid;
+  align-items: center;
+  gap: clamp(1rem, 4vw, 2rem);
+  grid-template-columns: 1fr;              /* mobile: single column */
+}
+
+/* Desktop/tablet: two columns */
+@media (min-width: 768px) {
+  .hero__grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(1.2rem, 3vw, 2.5rem);
+  }
+}
+
+/* Content first on mobile, allow swapping on desktop if needed */
+.hero__content { order: 1; }
+.hero__media   { order: 2; }
+
+@media (min-width: 768px) {
+  .hero__content { order: 1; }
+  .hero__media   { order: 2; }
+}
+
+/* Typography scaling */
+.hero h1 {
+  font-size: clamp(1.9rem, 6.5vw, 3.2rem);
+  line-height: 1.12;
+  letter-spacing: 0.005em;
+  margin: 0 0 0.6rem 0;
+}
+
+
+/* CTA buttons wrap nicely on small screens */
+.hero__cta,
+.hero .btn-group,
+.hero .cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+}
+
+.hero .btn {
+  /* make tap targets comfy on mobile */
+  padding: 0.8rem 1rem;
+  font-size: 0.98rem;
+}
+
+/* Media (image/video) containment */
+.hero__media {
+  width: 100%;
+}
+
+.hero__media img,
+.hero__media video,
+.hero__media svg,
+.hero__media picture img {
+  display: block;
+  width: 100%;
+  height: auto;             /* keep aspect ratio */
+  max-height: 420px;        /* reasonable cap on desktop */
+  object-fit: contain;      /* avoid cropping */
+}
+
+@media (max-width: 767.98px) {
+  .hero__media img,
+  .hero__media video {
+    max-height: 300px;      /* shorter on phones */
+    margin-top: 0.5rem;
+  }
+}
+
+/* Optional: center-align text on mobile for better balance */
+@media (max-width: 767.98px) {
+  .hero__content {
+    text-align: center;
+  }
+  .hero__cta,
+  .hero .btn-group,
+  .hero .cta-row {
+    justify-content: center;
+  }
 }

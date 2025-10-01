@@ -1,100 +1,401 @@
-<!--<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign In - Salary Tea</title>
-  <link rel="stylesheet" href="styles/styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-  <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js"></script>
-  <script type="module" src="auth.js"></script>
-
-</head>
-<body>
-<div class="container">
-  <div class="form-container">
-    <a href="#" class="back-link">← Back to dashboards</a>
-    <h1>Sign In</h1>
-    <p>Enter your email and password to sign in!</p>
-    <button id="google-btn" class="google-btn">Sign in with Google</button>
-    <div class="divider">or</div>
-
-    <form id="login-form">
-      <label for="email">Email*</label>
-      <input type="email" id="email" name="email" placeholder="mail@simmpple.com" required>
-
-      <label for="password">Password*</label>
-      <input type="password" id="password" name="password" placeholder="Min. 8 characters" minlength="8" required>
-
-      <div class="options">
-        <div class="checkbox-container">
-          <input type="checkbox" id="keep-logged-in" name="keep-logged-in">
-          <label for="keep-logged-in">Keep me logged in</label>
-        </div>
-        <a href="#" class="forgot-password">Forgot password?</a>
-      </div>
-
-      <button type="submit" class="sign-in-btn">Sign In</button>
-    </form>
-
-    <p class="create-account">Not registered yet? <a href="sign-up.html">Create an Account</a></p>
-  </div>
-  <div class="branding-container">
-    <div class="branding-content"></div>
-  </div>
-</div>
-</body>
-</html>-->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sign In - Salary Tea</title>
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="../src/styles/styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
-
-  <!-- Firebase Auth Logic -->
-  <script type="module" src="../src/js/auth.js"></script>
+  <title>CoStac — Stack smarter. Scale faster.</title>
+  <link rel="stylesheet" href="../src/styles/landing.css" />
 </head>
 <body>
-  <div class="container">
-    <div class="form-container">
-      <a href="#" class="back-link">← Back to dashboards</a>
-      <h1>Sign In</h1>
-      <p>Enter your email and password to sign in!</p>
-      <button id="google-btn" class="google-btn">Sign in with Google</button>
-      <div class="divider">or</div>
+  <!-- Navbar -->
+  <!-- Navbar -->
+<header class="nav">
+  <div class="container nav__row">
+    <a class="brand" href="index.html">
+      <img src="../public/images/LogoOnly.png" alt="CoStac logo" class="brand__logo">
+      <span class="brand__text">CoStac</span>
+    </a>
 
-      <!-- Sign-in Form -->
-      <form id="login-form">
-        <label for="email">Email*</label>
-        <input type="email" id="email" name="email" placeholder="mail@simmpple.com" required />
+    <!-- Desktop Nav -->
+    <nav class="nav__links">
+      <a href="ai-copilot.html">Copilot</a>
+      <a href="profile.html">Profile</a>
+      <a href="financial-dashboard.html">Dashboard</a>
+      <a href="cfo-dashboard.html">Performance</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfWa9i4KYTcJDCNnfDOI1ms9YxwhbYvTVlQ6aOUbQS7Mfj1_A/viewform?usp=sharing&ouid=103478291234626625208"
+         target="_blank" rel="noopener" class="btn btn--primary">
+        Contact Us
+      </a>
+    </nav>
 
-        <label for="password">Password*</label>
-        <input type="password" id="password" name="password" placeholder="Min. 8 characters" minlength="8" required />
-
-        <div class="options">
-          <div class="checkbox-container">
-            <input type="checkbox" id="keep-logged-in" name="keep-logged-in" />
-            <label for="keep-logged-in">Keep me logged in</label>
-          </div>
-          <a href="#" class="forgot-password">Forgot password?</a>
-        </div>
-
-        <button type="submit" class="sign-in-btn">Sign In</button>
-      </form>
-
-      <p class="create-account">Not registered yet? <a href="sign-up.html">Create an Account</a></p>
+    <!-- Auth buttons -->
+    <div class="nav__auth">
+      <a href="sign-in.html" class="btn btn--ghost">Sign in</a>
+      <a href="sign-up.html" class="btn btn--primary">Register</a>
     </div>
-    <div class="branding-container">
-      <div class="branding-content"></div>
+
+    <!-- Burger Menu -->
+    <button class="nav__burger" id="burger" aria-label="Menu">
+      <svg class="icon" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer" id="drawer" hidden>
+    <div class="container">
+      <a href="ai-copilot.html">Products</a>
+      <a href="sales.html">Solutions</a>
+      <a href="profile.html">Community</a>
+      <a href="financial-dashboard.html">Resources</a>
+      <a href="cfo-dashboard.html">Pricing</a>
+
+      <!-- Contact stays external -->
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfWa9i4KYTcJDCNnfDOI1ms9YxwhbYvTVlQ6aOUbQS7Mfj1_A/viewform?usp=sharing"
+         target="_blank" rel="noopener">Contact</a>
+
+      <div class="drawer__auth">
+        <a href="sign-in.html" class="btn btn--ghost full">Sign in</a>
+        <a href="sign-up.html" class="btn btn--primary full">Register</a>
+      </div>
     </div>
   </div>
+</header>
+
+
+  <!-- Hero with background image -->
+  <section class="hero">
+    <div class="hero__grid container">
+      <div class="hero__content">
+        <h1 class="typing"><span id="typewriter"></span></h1>
+
+        <p>
+          The <span class="highlight">1<sup>st</sup> emotionally intelligent financial copilot</span><br>
+          that stacks insights on top of your operations.
+        </p>
+
+        <div class="cta-row">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfWa9i4KYTcJDCNnfDOI1ms9YxwhbYvTVlQ6aOUbQS7Mfj1_A/viewform?usp=sharing" class="btn btn--primary">Get Started</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfWa9i4KYTcJDCNnfDOI1ms9YxwhbYvTVlQ6aOUbQS7Mfj1_A/viewform?usp=sharing" class="btn btn--secondary">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logos -->
+  <section class="logos">
+    <div class="container">
+      <p class="logos__kicker">Finance teams have saved millions of hours with us</p>
+      <div class="logos__slider">
+        <div class="logos__track">
+          <img src="../public/images/jhulogo.png" alt="JHU logo">
+          <img src="../public/images/umdlogo.png" alt="UMD logo">
+          <img src="../public/images/umbclogo.png" alt="UMBC logo">
+          <img src="../public/images/kapowlogo.png" alt="Kapow logo">
+          <img src="../public/images/ajmlogo.png" alt="AJM logo">
+          <img src="../public/images/megalogo.png" alt="Mega logo">
+          <img src="../public/images/kusshilogo.png" alt="Kusshi logo">
+
+          <!-- duplicate once for infinite scroll -->
+          <img src="../public/images/jhulogo.png" alt="JHU logo">
+          <img src="../public/images/umdlogo.png" alt="UMD logo">
+          <img src="../public/images/umbclogo.png" alt="UMBC logo">
+          <img src="../public/images/kapowlogo.png" alt="Kapow logo">
+          <img src="../public/images/ajmlogo.png" alt="AJM logo">
+          <img src="../public/images/megalogo.png" alt="Mega logo">
+          <img src="../public/images/kusshilogo.png" alt="Kusshi logo">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CoStac Product Suite -->
+  <section class="product-suite">
+    <div class="container">
+      <p class="product-suite__kicker">CoStac Product Suite</p>
+      <h2>Get to know CoStac</h2>
+      <p class="product-suite__desc">
+        Replace fragile spreadsheets with an intelligent finance copilot that blends behavioral finance with automation—
+        using bias-aware nudges, smart defaults, and gentle friction-reduction to help teams act on the right numbers with confidence.
+      </p>
+
+      <div class="product-suite__grid">
+        <!-- All six product cards -->
+        <article class="card">
+          <div class="card__media">
+            <div class="card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 3c-3.9 0-7 2.9-7 6.5 0 2.5 1.5 4.5 3.5 5.5v2a1.5 1.5 0 003 0v-2c2-1 3.5-3 3.5-5.5C15.5 5.9 12 3 12 3z"/>
+              </svg>
+            </div>
+            <div class="card__text">
+              <h3>CoStac Intelligence</h3>
+              <p>Put CoStac AI to work for you.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__media">
+            <div class="card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M21 12a9 9 0 11-6.22-8.56L21 3v9zM8 10h.01M12 10h.01M16 10h.01"/>
+              </svg>
+            </div>
+            <div class="card__text">
+              <h3>Behavioral Finance Coach</h3>
+              <p>Bias-aware nudges with real-time sentiment analysis to time and tailor tone, channel, and next steps.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__media">
+            <div class="card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M3 17l6-6 4 4 8-8"/>
+              </svg>
+            </div>
+            <div class="card__text">
+              <h3>Cashflow Copilot</h3>
+              <p>Future cash-flow forecasting and runway projections with proactive alerts.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__media">
+            <div class="card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M4 19h16M7 15h10M9 11h8M11 7h6"/>
+              </svg>
+            </div>
+            <div class="card__text">
+              <h3>Scenario Planner</h3>
+              <p>Pricing, hiring, and burn “what-ifs” in seconds.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__media">
+            <div class="card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M5.12 17.8A8 8 0 1119 8m-7 8a4 4 0 100-8 4 4 0 000 8z"/>
+              </svg>
+            </div>
+            <div class="card__text">
+              <h3>Live Expert Consultant</h3>
+              <p>QuickBooks accounting setup, AI integration, and a human-eye audit for extra support.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__media">
+            <div class="card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M9 12l2 2 4-4m-6 8h6M17 20a2 2 0 002-2V7a2 2 0 00-2-2h-1.6A2 2 0 0013 4h-2a2 2 0 00-1.4.6L8 6H7a2 2 0 00-2 2v10a2 2 0 002 2h10z"/>
+              </svg>
+            </div>
+            <div class="card__text">
+              <h3>Close Automation</h3>
+              <p>Faster reconciliations and budget-vs-actuals; one-click investor packs.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Metrics -->
+  <section class="metrics">
+    <div class="container metrics__grid">
+      <article class="metric">
+        <div class="metric__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <h3>1.2k+</h3>
+        <p class="metric__heading">AI Interactions</p>
+        <p class="metric__sub">Smart Coaching Moments</p>
+      </article>
+
+      <article class="metric">
+        <div class="metric__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 5h6m-2 0V3H9v2zm-4 4h10M7 13h10M7 17h6m2 4H9a2 2 0 01-2-2V7h10v12a2 2 0 01-2 2z"/>
+          </svg>
+        </div>
+        <h3>100+</h3>
+        <p class="metric__heading">Waitlist</p>
+        <p class="metric__sub">Early Adopters</p>
+      </article>
+
+      <article class="metric">
+        <div class="metric__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3a9 9 0 100 18 9 9 0 000-18zm0 0c2.5 2.5 2.5 6.5 0 9m0 0c-2.5-2.5-2.5-6.5 0-9m0 0V21"/>
+          </svg>
+        </div>
+        <h3>4</h3>
+        <p class="metric__heading">Countries Reached</p>
+        <p class="metric__sub">Global Reach</p>
+      </article>
+
+      <article class="metric">
+        <div class="metric__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 19h16M4 15h10M4 11h6M4 7h2"/>
+          </svg>
+        </div>
+        <h3>500+</h3>
+        <p class="metric__heading">Financial Insights Delivered</p>
+        <p class="metric__sub">Auto-generated reports</p>
+      </article>
+
+      <article class="metric">
+        <div class="metric__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 6v6l4 2m6-2a10 10 0 11-20 0 10 10 0 0120 0z"/>
+          </svg>
+        </div>
+        <h3>40+ / mo</h3>
+        <p class="metric__heading">Time Saved</p>
+        <p class="metric__sub">Ops hours returned</p>
+      </article>
+
+      <article class="metric">
+        <div class="metric__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-10v2m0 8v2"/>
+          </svg>
+        </div>
+        <h3>$4M+</h3>
+        <p class="metric__heading">Data Under Management</p>
+        <p class="metric__sub">Cash-flow patterns learned from real books</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="how">
+    <div class="container">
+      <h2>HOW DOES IT WORK?</h2>
+      <p class="how__desc">
+        Pioneering behavioral finance so that you can lead like a CFO (calm, clear, confident)
+      </p>
+
+    <div class="how__grid">
+      <!-- 1) Connect & Import -->
+      <article class="howcard tile--sage">
+        <div class="howcard__icon">
+          <!-- Folder/Link -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 7h6l2 2h10v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/>
+          </svg>
+        </div>
+        <h3>Connect &amp; Import</h3>
+        <p>
+          <strong>Secure Copilot Space</strong> — Link QuickBooks (read-only) and upload your key financial documents.
+          Everything lands in your private, secure CoStac copilot workspace for analysis—set up in minutes.
+        </p>
+      </article>
+
+      <!-- 2) Automate FP&A -->
+      <article class="howcard tile--plum">
+        <div class="howcard__icon">
+          <!-- Spark/Automation -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3v4m0 10v4M4.22 4.22l2.83 2.83m9.9 9.9 2.83 2.83M3 12h4m10 0h4m-2.05-7.78-2.83 2.83M6.34 17.66l-2.83 2.83"/>
+          </svg>
+        </div>
+        <h3>Automate FP&amp;A</h3>
+        <p>
+          <strong>Actionable Insights</strong> — CoStac turns raw numbers into a CFO-grade dashboard that doesn’t just
+          tell you what happened, but <em>what to do next</em>.
+        </p>
+      </article>
+
+      <!-- 3) See the Story & Plan Ahead -->
+      <article class="howcard tile--gold">
+        <div class="howcard__icon">
+          <!-- Chart/Forecast -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 20h18M7 16l3-3 3 3 5-5"/>
+          </svg>
+        </div>
+        <h3>See the Story &amp; Plan Ahead</h3>
+        <p>
+          <strong>Real-Time Visibility</strong> — Get a boardroom-ready narrative of your finances—in real time—so you
+          always know what changed, why, and the next 1–3 moves. Run future cash-flow forecasts and runway projections
+          to plan hires, pricing, and spend with confidence.
+        </p>
+      </article>
+
+      <!-- 4) Expert Review & Execute -->
+      <article class="howcard tile--teal">
+        <div class="howcard__icon">
+          <!-- User/Check -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm8 6-2 2-1-1"/>
+          </svg>
+        </div>
+        <h3>Expert Review &amp; Execute</h3>
+        <p>
+          <strong>Live Expert Consultant</strong> for QuickBooks accounting setup, AI integration, and a human-eye audit
+          with annotated recommendations—extra support whenever you want it.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <img src="../public/images/LogoOnly.png" alt="CoStac logo" class="brand__logo">
+      <span class="brand__text">CoStac</span>
+
+      <p>Stack smarter. Scale faster.</p>
+    </div>
+    <div>
+      <h4>Product</h4>
+      <ul><li><a href="#">Features</a></li><li><a href="#">Pricing</a></li></ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li></ul>
+    </div>
+    <div>
+      <h4>Resources</h4>
+      <ul><li><a href="#">Blog</a></li><li><a href="#">Docs</a></li></ul>
+    </div>
+  </div>
+  <div class="footer__bottom">© <span id="year"></span> CoStac, Inc. All rights reserved.</div>
+</footer>
+
+
+  <script src="../src/js/landing.js"></script>
 </body>
 </html>
-
